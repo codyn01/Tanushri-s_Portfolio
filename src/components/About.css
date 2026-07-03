@@ -1,0 +1,317 @@
+/** 
+ * @copyright 2025 Looknath
+ * @license Apache-2.0
+*/
+
+
+
+/* Unchanged code from .about-section to .info-cards */
+.about-section {
+  position: relative; 
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  color: white; 
+  text-align: center;
+  overflow: hidden;
+}
+.about-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  mix-blend-mode: lighten;
+}
+.foreground-video {
+  position: absolute;
+  top: 40%; 
+  left: 5%;
+  width: 100%;
+  height: 70vh;
+  object-fit: cover;
+  mix-blend-mode: lighten;
+  object-position: center 60%;
+  z-index: 1;
+}
+.scroll-down {
+  height: 50px;
+  width: 30px;
+  border: 2px solid lightgray;
+  position: absolute;
+  left:49%;
+  top: 10px;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(211, 211, 211, 0.477);
+}
+.scroll-down::before,
+.scroll-down::after{
+  content: "" ;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  height: 10px;
+  width: 10px;
+  border: 2px solid lightgray;
+  transform: translate(-50%, -100%) rotate(45deg);
+  border-top: transparent;
+  border-left: transparent;
+  animation: scroll-down 1s ease-in-out infinite;
+}
+.scroll-down::before{ top:30%; animation-delay: 0.2s; }
+@keyframes scroll-down{
+  0% { opacity: 0; }
+  30%, 60%{ opacity: 1; }
+  100% { top:90%; opacity: 0; }
+}
+.info-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  margin-top: 100px;
+}
+.section-title {
+  font-size: 40px;
+  font-weight: 700;
+}
+.info-cards {
+  display: grid;
+  grid-template-columns: 6fr 6fr 6.8fr;
+  grid-template-areas:
+    "card1 card2 card3"
+    "card5 card4 card3";
+  gap: 20px;
+  width: 100%;
+  margin-top: 30px;
+  padding-bottom: 100px; 
+}
+
+/* --- ALL MODIFICATIONS ARE BELOW THIS LINE --- */
+
+.card {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  position: relative;
+  width: auto;
+  height: 40vh;
+  overflow: hidden;
+  border: 1px solid grey;
+  background-color: #080020b7;
+  border-radius: 20px;
+  transition: box-shadow 0.2s ease-out, transform 0.2s ease-out;
+  /* FIX 1 of 3: Added z-index to prevent cards from overlapping and blocking hover */
+  z-index: 1;
+}
+
+.card:hover {
+   overflow: visible;
+  box-shadow: 0 0 25px aqua;
+  transform: scale(1.05);
+  z-index: 10;
+}
+
+.card img, .card video { border-radius: 10px; }
+.card img { width: 60%; height: 40%; object-fit: cover; margin-top: 7%; }
+.card video { margin-top: 13%; width: 75%; height: 57%; object-fit: cover; mix-blend-mode: lighten; }
+.card h1 { position: absolute; margin: 0; bottom: 35%; left: 5%; font-size: 25px; color: lightgray; }
+.card p { position: absolute; bottom: 3%; left: 5%; max-width: 300px; color: gray; font-size: 13px; line-height: 20px; }
+
+.card button {
+  color: white;
+  padding: 5px 15px;
+  border-radius: 10px;
+  border: 1px solid #727fdeb4;
+  background-color: #2200493d;
+  box-shadow: 0 0 5px #727fde86;
+  cursor: pointer;
+  transition: 0.3s;
+  position: absolute;
+  bottom: 5%;
+  left: 5%;
+  /* FIX 2 of 3: Added z-index to ensure the button is clickable and not covered by text */
+  z-index: 2;
+}
+.card button:hover { box-shadow: 0 0 15px #727fde86; opacity: 0.8; }
+
+.card:nth-child(1) {
+  grid-area: card1;
+  height: 48vh;
+  transform: scale(1.02);
+  transform-origin: left center;
+  z-index: 2; /* This card stays slightly above others by default */
+}
+.card:nth-child(1):hover { transform: scale(1.06); }
+.card:nth-child(1) img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid grey;
+  box-shadow: 0 0 15px aqua;
+  margin-top: 5%;
+}
+
+.card:nth-child(2) { grid-area: card2; }
+
+.card:nth-child(2) img {
+  position: absolute;
+  margin-top:0;
+ 
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 60%;
+  border-radius: 20px;
+}
+
+.card:nth-child(2) h1 {
+  bottom: 30%;
+}
+
+.card:nth-child(3) {
+  grid-area: card3;
+  grid-row: span 2;
+  height: calc(48vh + 38vh + 20px); 
+  margin-left: 8px;
+}
+.card:nth-child(3) video {
+    width: 100%;
+    height: 60%;
+    margin-top: 0;
+    object-fit: cover;
+}
+.card:nth-child(3) p { bottom: 15%; left: 20px; max-width: 85%; }
+.card:nth-child(3) h1 { bottom: unset; top: 65%; left: 20px; }
+
+.card:nth-child(4) { grid-area: card4; height: 38vh; }
+.card:nth-child(4) h1 { bottom: unset; top: 51px; left: 20px; }
+.card:nth-child(4) p { bottom: 8%; left: 20px; max-width: 85%; color: white; }
+.card:nth-child(4) img { width: 100%; height: 60%; margin-top: 0; }
+
+.card:nth-child(5) { grid-area: card5; height: 38vh; }
+.card:nth-child(5) h1 { bottom: 55%;font-size: 22px;position: absolute; left: 50%; transform: translateX(-50%); text-align: center; }
+.card:nth-child(5) p { bottom: 30%; max-width: 85%; }
+
+/* FIX 3 of 3: Added this new rule to center the "Download CV" button */
+.card:nth-child(5) button {
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 10%;
+}
+
+/* ===== CERTIFICATE CARD STYLE MATCH ABOUT ===== */
+
+.cert-glow{
+  position: relative;
+  border-radius: 18px;
+  transition: 0.3s ease;
+}
+
+.cert-glow::before{
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 18px;
+  background: linear-gradient(
+    45deg,
+    #00f0ff,
+    #7c3aed,
+    #00f0ff
+  );
+  filter: blur(10px);
+  opacity: 0.5;
+  z-index: -1;
+  transition: 0.3s;
+}
+
+.cert-glow:hover::before{
+  opacity: 1;
+  filter: blur(14px);
+}
+
+
+/* GLASS like About card */
+
+.cert-glass{
+  background: rgba(5, 10, 25, 0.55);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 18px;
+  overflow: hidden;
+}
+.cert-glow .card{
+  height: 320px;
+  backdrop-filter: blur(10px);
+  background-color: #080020b7;
+}
+
+.cert-overlay{
+  background: rgba(8,0,32,0.45);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border-top: 1px solid rgba(255,255,255,0.2);
+}
+.card{
+  background: rgba(8,0,32,0.35) !important;
+  backdrop-filter: blur(12px);
+}
+
+/* =========================================
+   MOBILE RESPONSIVENESS FIX
+   ========================================= */
+@media screen and (max-width: 850px) {
+  
+  /* 1. Scale down the main section constraints */
+  .info-section {
+    width: 95%; 
+    margin-top: 60px;
+  }
+
+  .section-title {
+    font-size: 28px; /* Prevent heading from breaking into too many lines */
+  }
+
+  /* 2. Switch from a 3-column Grid to a 1-column Flex stack */
+  .info-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding-bottom: 60px;
+  }
+
+  /* 3. Reset card heights and constraints */
+  .card,
+  .card:nth-child(1),
+  .card:nth-child(2),
+  .card:nth-child(3),
+  .card:nth-child(4),
+  .card:nth-child(5) {
+    width: 100%;
+    height: 420px; /* Replaces the extreme 'vh' variations */
+    margin-left: 0; /* Removes the 8px offset from Card 3 */
+    transform: none; /* Prevents Card 1 from scaling off the screen */
+  }
+
+  /* 4. Allow content inside cards to breathe */
+  .card img,
+  .card:nth-child(2) img,
+  .card:nth-child(4) img {
+    width: 90%; /* Stops images from overflowing the card border */
+    height: 45%;
+    object-fit: contain; /* Keeps image proportions clean */
+  }
+
+  .card p,
+  .card:nth-child(3) p,
+  .card:nth-child(4) p,
+  .card:nth-child(5) p {
+    max-width: 90%; /* Gives padding to text so it doesn't touch edges */
+    font-size: 14px;
+  }
+}

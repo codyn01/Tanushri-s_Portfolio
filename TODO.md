@@ -1,0 +1,11 @@
+- [x] Remove milliseconds from time display in DigitalClock.jsx
+- [x] Increase date font size from 14px/12px to 16px/14px
+- [x] Increase time font size from 18px/14px to 24px/18px
+- [x] Shift clock rings slightly upwards by 10 pixels
+- [x] Shift clock rings 5 more pixels upwards (total 15)
+- [x] Add another orbiting dot
+- [x] Adjust dot timings so both dots are on opposite sides
+- [x] Center the date and time text within the rings
+- [x] Change the color of the time text
+- [x] Change time text color to a more visible color
+- [x] Increase time text size
