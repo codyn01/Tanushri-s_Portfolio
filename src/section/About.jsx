@@ -78,9 +78,14 @@ Domains: ML, Data Science, Full-Stack<br/>etc.</p>
           Access My CV Below
           </h1>
             <p>You can grab my latest CV here and explore my detailed experience.</p>
-            <button onClick={() => window.open('/assets/resume.pdf', '_blank')}>
-              Download CV
-            </button>
+            <button
+  onClick={() => {
+    console.log("Button clicked");
+    window.open("/assets/resume.pdf", "_blank");
+  }}
+>
+  Download CV
+</button>
           </div>
 
         </div>
