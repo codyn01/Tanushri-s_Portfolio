@@ -74,19 +74,21 @@ Domains: ML, Data Science, Full-Stack<br/>etc.</p>
 
           {/* Card 5 */}
           <div className="card">
-           <h1>
-          Access My CV Below
-          </h1>
-            <p>You can grab my latest CV here and explore my detailed experience.</p>
-            <button
-  onClick={() => {
-    console.log("Button clicked");
-    window.open("/assets/resume.pdf", "_blank");
-  }}
->
-  Download CV
-</button>
-          </div>
+  <h1>Access My CV Below</h1>
+
+  <p>
+    You can grab my latest CV here and explore my detailed experience.
+  </p>
+
+  <a
+    href="/assets/resume.pdf"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="download-btn"
+  >
+    Download CV
+  </a>
+</div>
 
         </div>
       </section>
