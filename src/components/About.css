@@ -316,12 +316,3 @@
   }
 }
 
-.download-btn {
-  display: inline-block;
-  padding: 12px 24px;
-  border-radius: 8px;
-  background: #6c63ff;
-  color: white;
-  text-decoration: none;
-  cursor: pointer;
-}
